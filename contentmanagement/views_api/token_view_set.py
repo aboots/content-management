@@ -44,7 +44,7 @@ class TokenModelViewSet(ModelViewSet):
         query = super(TokenModelViewSet, self).get_queryset()
         if getattr(self, 'do_not_filter', False):
             return query
-        field = self.get_serializer().memo_user_field_name
+        field = self.get_serializer().user_field_name
         user = self.get_user()
         dic = {field: user}
         return query.filter(**dic)
