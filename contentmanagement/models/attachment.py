@@ -27,3 +27,4 @@ class Attachment(TimeModel):
     class Meta:
         verbose_name = 'پیوست'
         verbose_name_plural = 'پیوست ها'
+        unique_together = ('library_file', 'file')
