@@ -6,14 +6,14 @@ from rest_framework.viewsets import ModelViewSet
 
 from contentmanagement.models import User
 
-User_KEY = 'User-Token'
+USER_KEY = 'User-Token'
 
 
 class AllowUser(BasePermission):
 
     def has_permission(self, request, view):
-        if User_KEY in dict(request.headers):
-            token = request.headers[User_KEY]
+        if USER_KEY in dict(request.headers):
+            token = request.headers[USER_KEY]
             user = User.objects.filter(token=token).first()
             if user:
                 return True
@@ -32,7 +32,7 @@ class TokenModelViewSet(ModelViewSet):
         return context
 
     def get_user(self):
-        token = self.request.headers[User_KEY]
+        token = self.request.headers[USER_KEY]
         if not token:
             raise PermissionDenied('user token missed')
         user = User.objects.filter(token=token).first()
@@ -55,7 +55,7 @@ class TokenBaseApiView(APIView):
     permission_classes = (IsAuthenticated, AllowUser)
 
     def get_user(self):
-        token = self.request.headers[User_KEY]
+        token = self.request.headers[USER_KEY]
         if not token:
             raise PermissionDenied('user token missed')
         user = User.objects.filter(token=token).first()

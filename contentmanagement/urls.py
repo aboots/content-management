@@ -7,6 +7,8 @@ router = DefaultRouter()
 
 router.register('user', views_api.UserModelViewSet)
 router.register('library', views_api.LibraryModelViewSet)
+router.register('file', views_api.LibraryFileModelViewSet)
+router.register('attachment', views_api.AttachmentViewSet)
 
 urlpatterns = [
     path('login/', views_api.LoginView.as_view()),
