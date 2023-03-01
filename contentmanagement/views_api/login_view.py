@@ -19,11 +19,11 @@ class LoginView(APIView):
             raise NotAcceptable('you should send password and username')
         username = data['username']
         password = data['password']
-        memo_user = User.objects.filter(username=username).first()
-        if not memo_user:
+        user = User.objects.filter(username=username).first()
+        if not user:
             raise NotFound('user not found')
-        if memo_user and (check_password(password, memo_user.password) or password == memo_user.password):
-            memo_user.set_token()
-            memo_user.save()
-            return Response(UserSerializer(instance=memo_user).data)
+        if user and (check_password(password, user.password) or password == user.password):
+            user.set_token()
+            user.save()
+            return Response(UserSerializer(instance=user).data)
         raise PermissionDenied('password incorrect')
