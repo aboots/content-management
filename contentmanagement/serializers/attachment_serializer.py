@@ -22,7 +22,7 @@ class AttachmentSerializer(BaseTokenSerializer):
             raise ValidationError('Not your own library')
         fields = json.loads(library_file.attachment_fields) \
             if library_file.attachment_fields else list()
-        if attrs['field'] not in fields:
+        if 'field' in attrs and attrs['field'] not in fields:
             raise ValidationError('Not valid attachment field')
         return attrs
 

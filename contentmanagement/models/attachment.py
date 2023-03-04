@@ -6,7 +6,7 @@ from contentmanagement.models import TimeModel
 
 
 class Attachment(TimeModel):
-    field = models.CharField(max_length=60)
+    field = models.CharField(max_length=60, blank=True, null=True)
 
     library_file = models.ForeignKey(
         'contentmanagement.LibraryFile',
