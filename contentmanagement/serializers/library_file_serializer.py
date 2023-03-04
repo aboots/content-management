@@ -3,11 +3,16 @@ import json
 from rest_framework.exceptions import ValidationError
 
 from contentmanagement.models import LibraryFile
+from contentmanagement.serializers.attachment_serializer import AttachmentModelSerializer
 from contentmanagement.serializers.base_token_serializer import BaseTokenSerializer
 
 
 class LibraryFileSerializer(BaseTokenSerializer):
     user_field_name = 'library__users'
+    attachments = AttachmentModelSerializer(
+        many=True,
+        read_only=True
+    )
 
     def validate(self, attrs):
         library = attrs['library']
@@ -47,6 +52,7 @@ class LibraryFileSerializer(BaseTokenSerializer):
             'file_name',
             'created',
             'modified',
+            'attachments'
         )
 
-        read_only_fields = ('id', 'created', 'modified', 'file_name')
+        read_only_fields = ('id', 'created', 'modified', 'file_name', 'attachments')

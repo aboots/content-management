@@ -1,9 +1,16 @@
 import json
 
 from rest_framework.exceptions import ValidationError
+from rest_framework.serializers import ModelSerializer
 
 from contentmanagement.models import Attachment
 from contentmanagement.serializers.base_token_serializer import BaseTokenSerializer
+
+
+class AttachmentModelSerializer(ModelSerializer):
+    class Meta:
+        model = Attachment
+        fields = ['id', 'field', 'file', 'file_name']
 
 
 class AttachmentSerializer(BaseTokenSerializer):
