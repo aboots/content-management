@@ -1,14 +1,12 @@
 # content-management
-This is a content management system where you can create different types of libraries (videos/musics/books/pictures) and upload your files into it.
-This system helps you to manage your files and you can also share your libraries with your friends. In addition, files of each library can have their special
-attachments. It is designed to be simple to use and flexible enough to meet a wide range of needs.
-This project consists of 3 parts. Front-end, Back-end, and DevOps. This repositoy consist of Back-end and DevOps part.
+This project presents a versatile content management system designed to manage a wide range of content types including videos, music, books, and pictures. Users can create their own libraries, upload files, and even share these libraries with friends. Each file in the library can have its own special attachments. The system is designed to be user-friendly while providing the flexibility to meet a wide range of needs. The project is divided into three parts: Front-end, Back-end, and DevOps. T
+his repository specifically contains the Back-end and DevOps components.
 
 ## Run Django Server
 To run Django App first go to the backend directory. Create a virtual environment and then install requirements. You can install requirements with:
 ### `pip install -r requirements.txt`
 
-Now, you can run server with this command.
+Now, you can run the server with this command.
 ### `python manage.py runserver`
 It's time to run the front-end project.
 
